@@ -33,6 +33,7 @@ async function run(mess) {
     const result = await chatSession.sendMessage(mess);
     return result.response.text();
 }
+app.use(express.static("public"));
 app.get("/start-server", (req, res) => {
     res.json({ message: "Server is running" });
 });

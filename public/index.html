@@ -165,6 +165,7 @@
         const tl = [];
         const loadingModal = document.getElementById('loadingModal');
         const submitButton = form.querySelector('button');
+        const url = ``;
 
         form.onsubmit = (e) => {
             e.preventDefault();
@@ -179,7 +180,7 @@
             const text = document.getElementById('text').value;
             message.push(text);
             submitButton.disabled = true;
-            fetch('http://localhost:3000/generate', {
+            fetch(url + '/generate', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -195,7 +196,7 @@
 
         const start = async () => {
             loadingModal.style.display = 'flex';
-            const response = await fetch('http://localhost:3000/start-server');
+            const response = await fetch(url + '/start-server');
             const result = await response.json();
             if (result.status === 'pending') {
                 loadingModal.style.display = 'flex';
